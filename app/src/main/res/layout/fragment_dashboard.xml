@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.DashboardFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_menu"
+        app:title="Expense App"
+        app:titleTextColor="?attr/colorOnPrimary" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupWithTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="rupeeSymbol,totalSpent,textViewAmount,recyclerViewExpense" />
+
+    <TextView
+        android:id="@+id/rupeeSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="100dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/rupee_symbol"
+        android:textSize="38sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewExpense"
+        app:layout_constraintEnd_toStartOf="@+id/textViewAmount"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialToolbar" />
+
+    <TextView
+        android:id="@+id/totalSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Total Spent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAmount"
+        app:layout_constraintStart_toEndOf="@+id/rupeeSymbol"
+        app:layout_constraintTop_toTopOf="@id/rupeeSymbol"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textViewAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="500.0"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@id/rupeeSymbol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rupeeSymbol"
+        app:layout_constraintTop_toBottomOf="@+id/totalSpent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewExpense"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rupeeSymbol" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupWithoutTransasctions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="lottieAnimation,textViewNoTransaction" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimation"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNoTransaction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_no_transaction" />
+
+    <TextView
+        android:id="@+id/textViewNoTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Transaction found"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottieAnimation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
